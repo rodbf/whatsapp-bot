@@ -9,12 +9,18 @@ module.exports = {
 };
 
 function getCommand(msg){
-	return command = splitMsg(msg.body)[0];
+	let command = msg.body.match(/^![^!\s]+/);
+	return command?command[0]:false;
 }
 
 function getOptions(msg){
-	let options = splitMsg(msg.body);
-	options.shift();
+	let options = msg.body.match(/(?:[^\s"]+|"[^"]*")+/g);
+	if(options){
+		options.shift();
+		for(let i = 0; i < options.length; i++){
+			options[i] = options[i].replace(/"/g,'');
+		}
+	}
 	return options;
 }
 
@@ -24,16 +30,4 @@ async function getSender(msg){
 
 function formatArgument(str){
 	return str.replace("\n\n","\n");
-}
-
-//---------------
-
-function splitMsg(str){
-	let split = str.match(/(?:[^\s"]+|"[^"]*")+/g);
-	if(split){
-		for(let i = 0; i < split.length; i++){
-			split[i] = split[i].replace(/"/g,'');
-		}
-	}
-	return split;
 }

@@ -25,13 +25,13 @@ let commands = {
             ["desc"]
         ],
         process: (msg) => {
-            msg.reply(getCommands(msg));
+            msg.reply(getCommandDescriptors(msg));
             return;
         }
     }
 }
 
-function getCommands(msg){
+function getCommandDescriptors(msg){
     let options = getOptions(msg);
     let keys = Object.keys(commands);
     let output = "List of commands:\n";
