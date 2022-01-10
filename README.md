@@ -1,4 +1,4 @@
-não mais sendo mantida - use <a href="https://github.com/rodbf/whatsapp-bot-md">a versão md</>
+não mais sendo mantida - use <a href="https://github.com/rodbf/whatsapp-bot-md">a versão md</a>
 
 1. instala o node
 2. clona o repo
